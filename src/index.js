@@ -1,3 +1,3 @@
-import env from "../config";
+import getData from "./modules/getData";
 
-console.log(env)
+getData.makeCall().then(r => console.log(r))
