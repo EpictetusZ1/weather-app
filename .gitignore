@@ -1,5 +1,6 @@
 # Ignore files:
 .DS_Store
+config.js
 
 # Ignore dir:
 dist/
