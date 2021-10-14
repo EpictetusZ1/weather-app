@@ -1,0 +1,7 @@
+# Ignore files:
+.DS_Store
+
+# Ignore dir:
+dist/
+node_modules/
+.idea/
