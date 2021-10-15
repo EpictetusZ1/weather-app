@@ -7,6 +7,7 @@ import getData from "./modules/getData";
 
 const loadDisplay = () => {
     mainSection.makeMenu()
+    mainSection.makeCardArea()
 }
 
 loadDisplay()

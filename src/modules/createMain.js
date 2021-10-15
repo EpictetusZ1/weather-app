@@ -3,8 +3,7 @@
 const mainSection = (() => {
     const content = document.getElementById("content")
 
-    // Menu: title, searchBar and F/C switch
-    const makeMenu = () => {
+    const makeMenu = () => { // Menu: title, searchBar and F/C switch
 
         const searchBar = () => {
             const searchContainer = document.createElement("div")
@@ -44,11 +43,39 @@ const mainSection = (() => {
         return content.appendChild(menuDiv)
     }
 
-    // Background(or card container rather)
-    // Card
-    // Buttons to move left and right
+    const makeCardArea = () => {
+        const makeCardContainer = () => {
+            const cardContainer = document.createElement("div")
+            cardContainer.id = "cardContainer"
+            return content.appendChild(cardContainer)
+        }
+
+        const makeBtnEls = () => {
+            const btnContainer = document.createElement("div")
+            btnContainer.className = "btnContainer"
+
+            const leftBtn = document.createElement("div")
+            leftBtn.className = "navBtn"
+            leftBtn.classList.add("leftNav")
+
+            const rightBtn = document.createElement("div")
+            rightBtn.className = "navBtn"
+            rightBtn.classList.add("rightNav")
+
+            btnContainer.appendChild(leftBtn)
+            btnContainer.appendChild(rightBtn)
+            return content.appendChild(btnContainer)
+        }
+
+        makeCardContainer()
+        makeBtnEls()
+    }
+
+    // I want the card to be appended to the cardArea, but probably in a different function
+    // One that can dynamically make cards from localStorage and the API
     return {
-       makeMenu
+        makeMenu,
+        makeCardArea
     }
 })()
 

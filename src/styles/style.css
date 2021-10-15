@@ -49,6 +49,8 @@ body {
     width: 27%;
     float: right;
     display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
     align-items: center;
 }
 
@@ -63,9 +65,30 @@ body {
 
 .searchBtn {
     height: 25px;
-    width: 100px;
+    width: 75px;
     border: none;
     outline: none;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+#cardContainer {
+    height: 75%;
+    width: 100%;
+}
+
+.btnContainer {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+}
+
+.navBtn {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background-color: var(--aero-blue);
+    margin-right: 50px;
     cursor: pointer;
 }
