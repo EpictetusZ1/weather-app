@@ -8,6 +8,8 @@
     --aero-blue: #cae8d9;
     /* Background Color: */
     --mountain-meadow: #4cbc9d;
+    /* Card Title*/
+    --eerie: #181818;
 }
 
 html, body {
@@ -75,6 +77,10 @@ body {
 #cardContainer {
     height: 75%;
     width: 100%;
+    padding-left: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .btnContainer {
@@ -91,4 +97,44 @@ body {
     background-color: var(--aero-blue);
     margin-right: 50px;
     cursor: pointer;
+}
+
+.card {
+    height: 100%;
+    width: 350px;
+    border-radius: 35px;
+    background-color: var(--keppel);
+    box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+}
+
+.cardTitle {
+    width: 100%;
+    height: 50px;
+    margin: 15px 0 0 20px;
+    font-family: "Lucida Grande", serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--eerie);
+}
+
+.tempContainer {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.tempDesc {
+    font-size: 1.5em;
+    color: var(--aero-blue);
+    font-family: "Lucida Grande", serif;
+}
+
+.temp {
+    font-size: 5em;
+    font-family: "Lucida Grande", serif;
+    color: var(--prussian-blue);
 }

@@ -30,7 +30,7 @@ const mainSection = (() => {
         const makeTitle = () => {
             const titleContainer = document.createElement("div")
             titleContainer.classList.add("menuTitle")
-            titleContainer.textContent = "Weatherify"
+            titleContainer.textContent = "Weather-ify"
             return titleContainer
         }
 
