@@ -22,6 +22,8 @@
   },
   "homepage": "https://github.com/EpictetusZ1/weather-app#readme",
   "devDependencies": {
+    "css-loader": "^6.4.0",
+    "style-loader": "^3.3.0",
     "webpack": "^5.58.2",
     "webpack-cli": "^4.9.0"
   }
