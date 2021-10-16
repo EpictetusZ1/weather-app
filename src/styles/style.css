@@ -105,6 +105,8 @@ body {
     border-radius: 35px;
     background-color: var(--keppel);
     box-shadow: rgba(0, 0, 0, 0.24) 0 3px 8px;
+    display: flex;
+    flex-direction: column;
 }
 
 .cardTitle {
@@ -112,9 +114,22 @@ body {
     height: 50px;
     margin: 15px 0 0 20px;
     font-family: "Lucida Grande", serif;
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: bold;
     color: var(--eerie);
+}
+
+.iconContainer {
+    height: 125px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cloudIcon {
+    height: 100%;
+    width: auto;
 }
 
 .tempContainer {
@@ -125,16 +140,50 @@ body {
     flex-direction: column;
     text-align: center;
     align-items: center;
+    font-family: "Lucida Grande", serif;
 }
 
 .tempDesc {
     font-size: 1.5em;
     color: var(--aero-blue);
-    font-family: "Lucida Grande", serif;
 }
 
 .temp {
     font-size: 5em;
-    font-family: "Lucida Grande", serif;
     color: var(--prussian-blue);
+}
+
+.feelsLike {
+    padding-top: 10px;
+    font-size: 1em;
+    color: #FFF;
+    opacity: 0.6;
+    text-align: center;
+}
+
+.cardSection {
+    height: 1.7em;
+    width: 90%;
+    margin: 10px auto;
+    display: inline-flex;
+    justify-content: center;
+    background-color: var(--ocean-green);
+    text-align: center;
+    line-height: 1.7em;
+    color: var(--aero-blue);
+    font-family: "Lucida Grande", serif;
+    border-radius: 10px;
+    opacity: 0.8;
+}
+
+.sectionTitle {
+    opacity: 0.8;
+    justify-self: left;
+}
+
+.sectionInfo {
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 1.3em;
+
 }
