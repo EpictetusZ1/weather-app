@@ -1,26 +1,26 @@
-import Data from "./test.json"
 import cloudIcon from "../assets/black_cloud_24dp.svg"
 
 const Card = (() => {
-    // makeCard() will iterate through an Array
 
     const parseData = (data) => {
-        const cleanData = { // Process/Parse down to only used data values.
+        const checkRain = (data) => {
+            if ("rain" in data) return data["rain"]["1h"]
+            else return 0
+        }
+        return { // Process/Parse down to only used data values.
             cityID: data["id"],
             name: data["name"],
-            description: data["weather"][0]["description"],
-            temp: data["main"]["temp"],
-            feels_like: data["main"]["feels_like"],
+            description: data["weather"][0]["main"],
+            temp: (data["main"]["temp"] - 273.15).toFixed(0),
+            feels_like: (data["main"]["feels_like"] - 273.15).toFixed(0),
 
             humidity: data["main"]["humidity"],
-            wind: data["wind"]["speed"] * 3.6,
-            rain: data["rain"]["1h"],
+            wind: (data["wind"]["speed"] * 3.6).toFixed(1),
+            rain: checkRain(data)
         }
-        console.log(cleanData)
-        return cleanData
     }
 
-    const makeCard = () => {
+    const makeCard = (Data) => {
         let cleanData = parseData(Data)
 
         const createCard = (data) => {
@@ -66,7 +66,7 @@ const Card = (() => {
                 const addTemp = (tempVal) => {
                     const temp = document.createElement("p")
                     temp.className = "temp"
-                    temp.textContent = tempVal + "°"
+                    temp.textContent = tempVal  + "°"
                     return temp
                 }
 
@@ -117,11 +117,18 @@ const Card = (() => {
                 const addRainChance = () => {
                     const rain = document.createElement("p")
                     rain.className = "sectionInfo"
-                    rain.textContent = data.rain * 100 + "%"
+                    const checkRain = (data) => {
+                       if (typeof data === undefined) {
+                           return 0
+                       } else {
+                           return data
+                       }
+                    }
+                    rain.textContent = checkRain(data.rain) + " mm"
 
                     const sectionDiv = makeSection()
 
-                    sectionDiv.appendChild( addSectionTitle("Chance of Rain: ") )
+                    sectionDiv.appendChild( addSectionTitle("Precipitation: ") )
                     sectionDiv.appendChild(rain)
                     card.appendChild(sectionDiv)
                 }
@@ -143,25 +150,25 @@ const Card = (() => {
             }
 
             const generateCardData = () => {
+                // Add title and icon
                 makeTitle(data.name)
                 addSvgIcon()
 
+                // Add temp elements
                 makeTemp(data.temp)
 
+                // Add wind speed, humidity and precipitation
                 addAuxData()
             }
-
             generateCardData()
-
         }
         populateCard(cleanData)
-
-
     }
 
     return {
         makeCard
     }
+
 })()
 
 export default Card
