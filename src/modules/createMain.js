@@ -1,4 +1,5 @@
-
+import arrowForward from "../assets/arrow_forward_ios_black_24dp.svg"
+import arrowBack from "../assets/arrow_back_ios_black_24dp.svg"
 
 const mainSection = (() => {
     const content = document.getElementById("content")
@@ -50,17 +51,38 @@ const mainSection = (() => {
             return content.appendChild(cardContainer)
         }
 
+        const addClickScroll = (leftBtn, rightBtn) => {
+            rightBtn.addEventListener("mousedown", () => {
+                    document.getElementById('cardContainer').scrollLeft += 40
+            })
+
+            leftBtn.addEventListener("mousedown", () => {
+                document.getElementById('cardContainer').scrollLeft -= 40
+            })
+        }
+
         const makeBtnEls = () => {
             const btnContainer = document.createElement("div")
             btnContainer.className = "btnContainer"
 
             const leftBtn = document.createElement("div")
             leftBtn.className = "navBtn"
-            leftBtn.classList.add("leftNav")
 
             const rightBtn = document.createElement("div")
             rightBtn.className = "navBtn"
-            rightBtn.classList.add("rightNav")
+
+            const arrowF = document.createElement("img")
+            arrowF.src = arrowForward
+            arrowF.className = "navArrow"
+
+            const arrowB = document.createElement("img")
+            arrowB.src = arrowBack
+            arrowB.className = "navArrow"
+
+            rightBtn.appendChild(arrowF)
+            leftBtn.appendChild(arrowB)
+
+            addClickScroll(leftBtn, rightBtn)
 
             btnContainer.appendChild(leftBtn)
             btnContainer.appendChild(rightBtn)
@@ -69,6 +91,7 @@ const mainSection = (() => {
 
         makeCardContainer()
         makeBtnEls()
+
     }
 
     // I want the card to be appended to the cardArea, but probably in a different function
