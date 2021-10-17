@@ -10,16 +10,24 @@ const mainSection = (() => {
             const searchContainer = document.createElement("div")
             searchContainer.className = "searchContainer"
 
+            const searchForm = document.createElement("form")
+            searchForm.id = "city-form"
+            searchForm.autocomplete = "off"
+
             const searchInput = document.createElement("input")
             searchInput.type = "search"
             searchInput.className = "searchInput"
+            searchInput.id = "search-city"
 
             const searchBtn = document.createElement("button")
             searchBtn.className = "searchBtn"
             searchBtn.textContent = "Find City"
+            searchBtn.id = "search-city-btn"
+            searchBtn.type = "submit"
 
-            searchContainer.appendChild(searchInput)
-            searchContainer.appendChild(searchBtn)
+            searchForm.appendChild(searchInput)
+            searchForm.appendChild(searchBtn)
+            searchContainer.appendChild(searchForm)
 
             return searchContainer
         }
