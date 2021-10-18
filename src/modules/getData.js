@@ -10,7 +10,7 @@ const apiCall = (()=> {
             console.log(weather)
             if (weather.cod === "400") throw {
                 msg: "HTTP: 400 Bad Request Error",
-                msgUsr: "Please enter a city",
+                usrMsg: "Please enter a city",
                 code: 400
             }
             if (weather.cod === "404") throw {

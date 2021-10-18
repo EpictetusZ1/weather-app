@@ -13,67 +13,48 @@ const loadDisplay = () => {
 
 loadDisplay()
 
+// localStorage.clear()
+// localStorage.setItem("cities", JSON.stringify(["Toronto", "New York", "Kingston", "Vienna"]))
+
 const checkLocalStore = () => {
-   if (!localStorage.getItem("cities")) {
-       return cityArr.push("Toronto")
-   } else {
-       return cityArr = JSON.parse(localStorage.getItem("cities"))
-   }
+    if (!localStorage.getItem("cities")) {
+        return cityArr.push("Toronto", "New York")
+    } else {
+        return cityArr = JSON.parse(localStorage.getItem("cities"))
+    }
 }
 
 checkLocalStore()
 
-const setLocalStorage = () => {
+const handleInput = () => {
     const searchForm = document.getElementById("city-form")
     const searchText = document.getElementById("search-city")
 
-    const errorFlow = async() => {
+    const setLocal = (arr) => {
+        localStorage.setItem("cities", JSON.stringify(arr))
+    }
+
+    const errorFlow = async() => { // Here we make the API call to see if it returns a valid response
         const response = await getData.makeCall(searchText.value)
-        const reply = addData(response)
+        cityArr.push(response["name"])
+        setLocal(cityArr)
+        return response
     }
 
     searchForm.addEventListener("submit", (e) => {
         e.preventDefault()
-        errorFlow().then(() => addCards())
+        errorFlow().then((response) => Card.makeCard(response))
         searchForm.reset()
     })
-
-    const alertError = (text) => {
-        let errMsg = document.createElement("p")
-        errMsg.className = "errMsg"
-        errMsg.textContent = text
-        searchForm.appendChild(errMsg)
-
-        searchText.classList.add("alertErr")
-
-        setTimeout(() => {
-            searchText.classList.toggle("alertErr")
-            searchForm.removeChild(errMsg)
-        }, 2000)
-    }
-
-    const addData = async (response) => {
-        await response
-        if (response["error"]) {
-            if (response.error.code === 400) {
-                alertError(response.error.msgUsr)
-            }
-            if (response.code === 404) {
-                alertError(response.error.msgUsr)
-            }
-        }
-        else {
-            return cityArr.push(response["name"])
-        }
-    }
 }
 
-setLocalStorage()
+handleInput()
 
+// Init card display
 const addCards = () => {
     for (let i = 0; i < cityArr.length; i++) {
-        console.log(cityArr[i])
         getData.makeCall(cityArr[i]).then(response => Card.makeCard(response))
     }
 }
 addCards()
+
