@@ -1,8 +1,12 @@
 import arrowForward from "../assets/arrow_forward_ios_black_24dp.svg"
 import arrowBack from "../assets/arrow_back_ios_black_24dp.svg"
+import sun from "../assets/sun-svgrepo-com.svg"
 
 const mainSection = (() => {
     const content = document.getElementById("content")
+
+    const favIcon = document.querySelector(".favicon")
+        favIcon.href = sun
 
     const makeMenu = () => { // Menu: title, searchBar and F/C switch
 
@@ -59,46 +63,7 @@ const mainSection = (() => {
             return content.appendChild(cardContainer)
         }
 
-        const addClickScroll = (leftBtn, rightBtn) => {
-            rightBtn.addEventListener("mousedown", () => {
-                    document.getElementById('cardContainer').scrollLeft += 40
-            })
-
-            leftBtn.addEventListener("mousedown", () => {
-                document.getElementById('cardContainer').scrollLeft -= 40
-            })
-        }
-
-        const makeBtnEls = () => {
-            const btnContainer = document.createElement("div")
-            btnContainer.className = "btnContainer"
-
-            const leftBtn = document.createElement("div")
-            leftBtn.className = "navBtn"
-
-            const rightBtn = document.createElement("div")
-            rightBtn.className = "navBtn"
-
-            const arrowF = document.createElement("img")
-            arrowF.src = arrowForward
-            arrowF.className = "navArrow"
-
-            const arrowB = document.createElement("img")
-            arrowB.src = arrowBack
-            arrowB.className = "navArrow"
-
-            rightBtn.appendChild(arrowF)
-            leftBtn.appendChild(arrowB)
-
-            addClickScroll(leftBtn, rightBtn)
-
-            btnContainer.appendChild(leftBtn)
-            btnContainer.appendChild(rightBtn)
-            return content.appendChild(btnContainer)
-        }
-
         makeCardContainer()
-        makeBtnEls()
 
     }
 
