@@ -1,4 +1,5 @@
 import cloudIcon from "../assets/black_cloud_24dp.svg"
+import xIcon from "../assets/close_lavender_24dp.svg"
 
 const Card = (() => {
 
@@ -35,6 +36,24 @@ const Card = (() => {
 
         const populateCard = (data) => {
             const card = document.getElementById(`${data.cityID}`)
+
+            const addRemoveBtn = (data) => {
+                const xBtn = document.createElement("img")
+                xBtn.src = xIcon
+                xBtn.className = "xButton"
+                xBtn.id = `remove-${data}`
+                xBtn.addEventListener("click", () => {
+                    const container = document.getElementById("cardContainer")
+                    container.removeChild( xBtn.closest("div") )
+                    let storage = JSON.parse(localStorage.getItem("cities"))
+
+                    storage.splice(storage.indexOf(`${data}`))
+                    if (storage.length > 0) localStorage.setItem("cities", JSON.stringify(storage))
+                    else if (storage.length === 0) storage.push("toronto")
+                    console.log(localStorage)
+                })
+                card.appendChild(xBtn)
+            }
 
             const makeTitle = (text) => {
                 const title = document.createElement("div")
@@ -151,6 +170,7 @@ const Card = (() => {
 
             const generateCardData = () => {
                 // Add title and icon
+                addRemoveBtn(data.name)
                 makeTitle(data.name)
                 addSvgIcon()
 

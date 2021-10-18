@@ -3,7 +3,6 @@ import "./styles/style.css"
 import mainSection from "./modules/createMain";
 import Card from "./modules/makeCard";
 import getData from "./modules/getData";
-import apiCall from "./modules/getData";
 
 let cityArr = []
 
@@ -13,9 +12,6 @@ const loadDisplay = () => {
 }
 
 loadDisplay()
-
-// localStorage.clear()
-// localStorage.setItem("cities", JSON.stringify(["Toronto", "New York", "Kingston", "Vienna"]))
 
 const checkLocalStore = () => {
     if (!localStorage.getItem("cities")) {
