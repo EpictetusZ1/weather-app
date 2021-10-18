@@ -12,6 +12,7 @@ const Card = (() => {
             cityID: data["id"],
             name: data["name"],
             description: data["weather"][0]["main"],
+            icon: data["weather"][0]["icon"],
             temp: (data["main"]["temp"] - 273.15).toFixed(0),
             feels_like: (data["main"]["feels_like"] - 273.15).toFixed(0),
 
@@ -50,7 +51,6 @@ const Card = (() => {
                     storage.splice(storage.indexOf(`${data}`))
                     if (storage.length > 0) localStorage.setItem("cities", JSON.stringify(storage))
                     else if (storage.length === 0) storage.push("toronto")
-                    console.log(localStorage)
                 })
                 card.appendChild(xBtn)
             }
@@ -62,12 +62,13 @@ const Card = (() => {
                 card.appendChild(title)
             }
 
-            const addSvgIcon = () => {
+            const addSvgIcon = (iconRef) => {
                 const iconContainer = document.createElement("div")
                 iconContainer.className = "iconContainer"
 
                 const icon = document.createElement("img")
-                icon.src = cloudIcon
+                icon.src = `http://openweathermap.org/img/wn/${iconRef}@2x.png`
+
                 icon.className = "cloudIcon"
 
                 iconContainer.appendChild(icon)
@@ -172,7 +173,7 @@ const Card = (() => {
                 // Add title and icon
                 addRemoveBtn(data.name)
                 makeTitle(data.name)
-                addSvgIcon()
+                addSvgIcon(data.icon)
 
                 // Add temp elements
                 makeTemp(data.temp)
