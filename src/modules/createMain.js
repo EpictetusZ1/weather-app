@@ -1,5 +1,3 @@
-import arrowForward from "../assets/arrow_forward_ios_black_24dp.svg"
-import arrowBack from "../assets/arrow_back_ios_black_24dp.svg"
 import sun from "../assets/sun-svgrepo-com.svg"
 
 const mainSection = (() => {
@@ -9,6 +7,25 @@ const mainSection = (() => {
         favIcon.href = sun
 
     const makeMenu = () => { // Menu: title, searchBar and F/C switch
+
+        const makeFCBtn = () => {
+            const tempSetContainer = document.createElement("div")
+            tempSetContainer.className = "tempSetContainer"
+
+            const fBtn = document.createElement("div")
+            fBtn.className = "tempBtn"
+            fBtn.id = "fahrenheit"
+            fBtn.textContent = "F°"
+
+            const cBtn = document.createElement("div")
+            cBtn.className = "tempBtn"
+            cBtn.id = "celsius"
+            cBtn.textContent = "C°"
+
+            tempSetContainer.appendChild(fBtn)
+            tempSetContainer.appendChild(cBtn)
+            return tempSetContainer
+        }
 
         const searchBar = () => {
             const searchContainer = document.createElement("div")
@@ -29,15 +46,15 @@ const mainSection = (() => {
             searchBtn.id = "search-city-btn"
             searchBtn.type = "submit"
 
+
+            searchContainer.appendChild( makeFCBtn() )
+
+
             searchForm.appendChild(searchInput)
             searchForm.appendChild(searchBtn)
             searchContainer.appendChild(searchForm)
 
             return searchContainer
-        }
-
-        const makeFCBtn = () => {
-            // TODO: Add code to toggle F or C display
         }
 
         const makeTitle = () => {
@@ -67,8 +84,6 @@ const mainSection = (() => {
 
     }
 
-    // I want the card to be appended to the cardArea, but probably in a different function
-    // One that can dynamically make cards from localStorage and the API
     return {
         makeMenu,
         makeCardArea

@@ -8,6 +8,7 @@ const Card = (() => {
             if ("rain" in data) return data["rain"]["1h"]
             else return 0
         }
+
         return { // Process/Parse down to only used data values.
             cityID: data["id"],
             name: data["name"],
@@ -86,15 +87,33 @@ const Card = (() => {
                 const addTemp = (tempVal) => {
                     const temp = document.createElement("p")
                     temp.className = "temp"
+                    temp.classList.add("tempVal")
                     temp.textContent = tempVal  + "°"
                     return temp
                 }
 
-                const addFeels = (feelVal) => {
+
+                const addFeels = () => {
                     const feels = document.createElement("p")
                     feels.className = "feelsLike"
-                    feels.textContent = `Feels like: ${feelVal}°`
+                    feels.textContent = `Feels like: `
                     return feels
+                }
+
+                const addFeelsValue = (feelVal) => {
+                    const tempValue = document.createElement("p")
+                    tempValue.className = "feelsLike tempVal"
+                    tempValue.textContent = ` ${feelVal}°`
+                    return tempValue
+                }
+
+                const addFeelsContainer = (data) => {
+                    const feelContainer = document.createElement("div")
+                    feelContainer.className = "feelsContainer"
+
+                    feelContainer.appendChild( addFeels() )
+                    feelContainer.appendChild( addFeelsValue(data.feels_like) )
+                    return feelContainer
                 }
 
                 const makeContainer = () => {
@@ -103,7 +122,8 @@ const Card = (() => {
 
                     tempContainer.appendChild( addDesc(data.description) )
                     tempContainer.appendChild( addTemp(data.temp) )
-                    tempContainer.appendChild( addFeels(data.feels_like) )
+
+                    tempContainer.appendChild( addFeelsContainer(data) )
                     card.appendChild(tempContainer)
                 }
                 makeContainer()

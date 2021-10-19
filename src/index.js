@@ -48,14 +48,14 @@ const handleInput = () => {
         }, 2000)
     }
 
-    const errorFlow = async() => { // Here we make the API call to see if it returns a valid response
+    const errorFlow = async() => { // Check to see if fetch returns valid response
         try {
             const response = await getData.makeCall(searchText.value)
             cityArr.push(response["name"])
             setLocal(cityArr)
             Card.makeCard(response)
         } catch (error) {
-            alertError(error.message)
+            alertError(error.message) // Warn User of er (404 or 400)
         }
     }
 
@@ -75,3 +75,46 @@ const addCards = () => {
     }
 }
 addCards()
+
+const changeTemp = () => {
+    let isCTemp = true
+    const cBtn = document.getElementById("celsius")
+    const fBtn = document.getElementById("fahrenheit")
+
+    const cToF = () => {
+        let tempVal = document.querySelectorAll(".tempVal")
+        if (isCTemp) {
+            tempVal.forEach((item) => {
+                isCTemp = false
+                let cTemp = parseInt(item.textContent)
+                return item.textContent = (cTemp * 9 / 5 + 32).toFixed(1) + "°"
+            })
+        }
+    }
+    const fToC = () => {
+        let tempVal = document.querySelectorAll(".tempVal")
+        if (!isCTemp) {
+            tempVal.forEach((item) => {
+                isCTemp = true
+                let fTemp  = parseInt(item.textContent)
+                return item.textContent = ((fTemp - 32) * 5 / 9).toFixed(0) + "°"
+            })
+        }
+    }
+
+    fBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        cToF()
+    })
+
+    cBtn.addEventListener("click", (e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        fToC()
+    })
+
+}
+changeTemp()
+
+

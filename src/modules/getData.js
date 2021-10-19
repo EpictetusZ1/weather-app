@@ -10,8 +10,7 @@ const apiCall = (()=> {
         const api = `api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${env.apiKey}`
         const response = await fetch(`http://${api}`, {mode: "cors"})
         if (response.ok) {
-            const weather = await response.json()
-            return weather
+            return await response.json()
         } else {
             return myError(response.status)
         }

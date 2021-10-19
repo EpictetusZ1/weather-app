@@ -53,13 +53,47 @@ body {
 
 .searchContainer {
     height: 100%;
-    width: 27%;
+    width: 30%;
     float: right;
     display: flex;
-    justify-content: flex-end;
-    margin-right: 20px;
+    justify-content: space-around;
     align-items: center;
-    text-align: left;
+}
+
+.tempSetContainer {
+    width: 100px;
+    height: 55px;
+    border-radius: 10px;
+    background-color: var(--english-lavender);
+    display: flex;
+    text-align: center;
+}
+
+.tempBtn {
+    height: 55px;
+    width: 50%;
+    font-size: 1.75em;
+    line-height: 55px;
+    font-family: Baskerville, serif;
+    color: #FFF;
+    cursor: pointer;
+}
+
+#fahrenheit {
+    border-radius: 10px 0 0 10px;
+}
+
+#fahrenheit:active {
+    background-color: var(--pastel-pink);
+}
+
+#celsius {
+    border-radius: 0 10px 10px 0;
+}
+
+#celsius:active {
+    background-color: var(--pastel-pink);
+
 }
 
 .searchInput {
@@ -175,9 +209,21 @@ body {
     color: var(--old-lavender);
 }
 
+.feelsContainer {
+    display: inline-flex;
+    height: 1em;
+    width: auto;
+    text-wrap: none;
+    align-items: center;
+}
+
+.feelsContainer > p {
+    margin-right: 5px;
+}
+
 .feelsLike {
     padding-top: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-size: 1em;
     color: var(--eerie);
     opacity: 0.6;
