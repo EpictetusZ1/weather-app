@@ -8,7 +8,7 @@ const apiCall = (()=> {
 
     const makeCall = async(city) => {
         const api = `api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${env.apiKey}`
-        const response = await fetch(`http://${api}`, {mode: "cors"})
+        const response = await fetch(`https://${api}`, {mode: "cors"})
         if (response.ok) {
             return await response.json()
         } else {

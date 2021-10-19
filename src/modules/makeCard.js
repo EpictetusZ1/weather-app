@@ -68,7 +68,7 @@ const Card = (() => {
                 iconContainer.className = "iconContainer"
 
                 const icon = document.createElement("img")
-                icon.src = `http://openweathermap.org/img/wn/${iconRef}@2x.png`
+                icon.src = `https://openweathermap.org/img/wn/${iconRef}@2x.png`
 
                 icon.className = "cloudIcon"
 

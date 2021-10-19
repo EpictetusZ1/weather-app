@@ -10,12 +10,6 @@
     --eerie: #181818;
 }
 
-
-::-webkit-scrollbar {
-    /*width: 0;*/
-    /*background: transparent;*/
-}
-
 html, body {
     max-width: 100%;
     max-height: 100%;
@@ -93,7 +87,6 @@ body {
 
 #celsius:active {
     background-color: var(--pastel-pink);
-
 }
 
 .searchInput {
@@ -137,7 +130,6 @@ body {
     flex-shrink: 0;
     width: 340px;
 }
-
 
 .card {
     height: 90%;
@@ -188,10 +180,9 @@ body {
 }
 
 .tempContainer {
-    height: 20%;
+    height: 22%;
     width: 100%;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     text-align: center;
     align-items: center;
@@ -213,7 +204,6 @@ body {
     display: inline-flex;
     height: 1em;
     width: auto;
-    text-wrap: none;
     align-items: center;
 }
 

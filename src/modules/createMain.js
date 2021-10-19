@@ -46,9 +46,7 @@ const mainSection = (() => {
             searchBtn.id = "search-city-btn"
             searchBtn.type = "submit"
 
-
             searchContainer.appendChild( makeFCBtn() )
-
 
             searchForm.appendChild(searchInput)
             searchForm.appendChild(searchBtn)
@@ -79,9 +77,7 @@ const mainSection = (() => {
             cardContainer.id = "cardContainer"
             return content.appendChild(cardContainer)
         }
-
         makeCardContainer()
-
     }
 
     return {
