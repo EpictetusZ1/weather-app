@@ -28,6 +28,7 @@ const handleInput = () => {
     const searchText = document.getElementById("search-city")
 
     const setLocal = (arr) => {
+
         localStorage.setItem("cities", JSON.stringify(arr))
     }
 
@@ -35,6 +36,7 @@ const handleInput = () => {
         let msg
         if (text === "400") msg = "Please enter a city"
         if (text === "404") msg = "City not found"
+        if (text === "Duplicate") msg = "Already added this city"
         let errMsg = document.createElement("p")
         errMsg.className = "errMsg"
         errMsg.textContent = msg
@@ -51,7 +53,13 @@ const handleInput = () => {
     const errorFlow = async() => { // Check to see if fetch returns valid response
         try {
             const response = await getData.makeCall(searchText.value)
+
+            if (cityArr.includes(response["name"])) {
+                return alertError("Duplicate")
+            }
+
             cityArr.push(response["name"])
+
             setLocal(cityArr)
             Card.makeCard(response)
         } catch (error) {

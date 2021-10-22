@@ -1,4 +1,3 @@
-import cloudIcon from "../assets/black_cloud_24dp.svg"
 import xIcon from "../assets/close_lavender_24dp.svg"
 
 const Card = (() => {
@@ -48,8 +47,8 @@ const Card = (() => {
                     const container = document.getElementById("cardContainer")
                     container.removeChild( xBtn.closest("div") )
                     let storage = JSON.parse(localStorage.getItem("cities"))
+                    storage.splice(storage.indexOf(`${data}`), 1)
 
-                    storage.splice(storage.indexOf(`${data}`))
                     if (storage.length > 0) localStorage.setItem("cities", JSON.stringify(storage))
                     else if (storage.length === 0) storage.push("toronto")
                 })

@@ -2,7 +2,7 @@
 
 ### See current weather data for all the cities you want 
 
-An assignment from [The Odin ProjectBoard](https://www.theodinproject.com/) to learn and practice:
+An assignment from [The Odin Project](https://www.theodinproject.com/) to learn and practice:
 - Asynchronous code 
 - Manipulating JSON data
 - Working with API's
